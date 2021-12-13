@@ -1,1 +1,1 @@
-# yonsei_2021term_public
+# yonsei_2021term
