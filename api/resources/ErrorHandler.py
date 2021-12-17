@@ -1,5 +1,7 @@
 from flask import jsonify, current_app
 
+# 에러 핸들링 정의
+
 class CustomError(Exception):
     def __init__(self, status, error_msg, dev_error = None):
         self.status_code = status

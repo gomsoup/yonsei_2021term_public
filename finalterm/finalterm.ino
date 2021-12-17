@@ -63,6 +63,9 @@ void writeCommand(int cmd)
   digitalWrite(PinCmd2, cmd & 0b01);
 }
 
+
+// 현재 state를 서버로 요청 후 해당 요청에 따라 장치 설정
+// 만약 APP_SWITCH_NORMAL_MODE일 경우 앱에서 일반 모드로 전환을 요청한 것으로 해당 요청시에만 argent 비트 해제
 void setCurrentState()
 {
   int ret = getCurrentState();

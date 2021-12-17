@@ -3,6 +3,7 @@
 #include "wifi.h"
 #include "enums.h"
 
+// return code와 payload를 저장하는 class
 class httpReturn{
 public:
     int code;

@@ -4,6 +4,7 @@ const char* ssid     = "";
 const char* password = "";
 
 
+// WiFi 객체를 이용한 ESP8266 initialization
 void wifi_setup() {
   // We start by connecting to a WiFi network
   Serial.println();

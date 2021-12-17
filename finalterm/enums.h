@@ -1,3 +1,7 @@
+/*
+    사용되는 enums 리스트
+*/
+
 static int NOTIFY_IDLE = 0;
 static int APP_SWITCH_ARGENT_MODE = 1;
 static int APP_SWITCH_NORMAL_MODE = 2;

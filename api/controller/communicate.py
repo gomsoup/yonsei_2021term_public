@@ -15,13 +15,12 @@ from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
 
 currentStatus = NOTIFY_IDLE
 
-
-#@communicator.route('/', methods=['POST'])
 @communicator.route('/',
     doc={
         "description": "Alias for /, this route is being phased out",
         "deprecated": True,
     },)
+# 사진 업로드 라우팅. 사진 정보와 디테일을 POST로 전송한다
 class Communicator(Resource):
     @communicator.doc()
     @communicator.expect(parser)
@@ -69,6 +68,9 @@ class Communicator(Resource):
         return jsonify({'ret' : 'Success'})
 
 @communicator.route('/arduino', methods=['POST', 'GET'])
+# 아두이노에서 ARGENT request를 처리하는 라우트. 
+# POST로 전송되었을 때는 arduino에서 보내는 msg를 수신.
+# GET으로 전송되었을 때는 arduino에서 현재 상태를 확인하는 것으로 현재 상태 반환
 class CommunicateArduino(Resource):
     @communicator.doc()
     @communicator.expect(arduino_post_parser)
@@ -139,6 +141,9 @@ class CommunicateArduino(Resource):
 
 
 @communicator.route('/app', methods=['POST', 'GET'])
+# 앱에서 status request를 처리하는 route
+# POST로 전송되었을 때는 앱에서 status를 업데이트 하는 것
+# GET으로 전송되었을 때는 현재까지의 status를 조회하는 것
 class CommunicateApp(Resource):
     @communicator.doc()
     @communicator.expect(app_post_parser)
