@@ -14,6 +14,7 @@ const int HTTP_SERVER_ERROR = 500;
 static unsigned long lastTime = 60001;
 unsigned long timeDelay = CHECK_STATE_DELAY;
 
+// GET request 처리
 httpReturn httpGETRequest(const char *serverName)
 {
     httpReturn ret;
@@ -38,6 +39,8 @@ httpReturn httpGETRequest(const char *serverName)
     return ret;
 }
 
+// POST request 처리
+// header와 body 추가
 httpReturn httpPOSTRequest(const char *serverName, String msg)
 {
     httpReturn ret;
@@ -64,6 +67,7 @@ httpReturn httpPOSTRequest(const char *serverName, String msg)
     return ret;
 }
 
+// Server가 살아있는지 체크
 bool checkHttpServer()
 {
     Serial.print("(GET) connecting to ");
@@ -95,6 +99,8 @@ bool checkHttpServer()
     return false;
 }
 
+// POST 처리와 리턴값 처리
+// 200이 아닐 경우 에러 핸들링
 bool sendPostRequest(int msg)
 {
     String body = "message=" + String(msg);
@@ -129,6 +135,8 @@ bool sendPostRequest(int msg)
     return false;
 }
 
+// 서버로부터 current state 체크
+// loop 안에서 실행되므로 delay 
 int getCurrentState()
 {
     int ret_val = -1;
